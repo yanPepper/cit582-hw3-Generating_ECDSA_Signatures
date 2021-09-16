@@ -10,7 +10,8 @@ def sign(m):
 	#generate public key
 	#Your code here
 	# this is your sign (private key)
-	private_key,public_key = keys.gen_keypair(curve.SECP256k1)
+	private_key = ecdsa.SigningKey.generate(curve=ecdsa.SECP256k1) 
+	public_key = private_key.get_verifying_key()
 
 	#generate signature
 	#Your code 
@@ -28,6 +29,5 @@ def sign(m):
 	assert isinstance( r, int )
 	assert isinstance( s, int )
 	return( public_key, [r,s] )
-
 
 
