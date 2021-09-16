@@ -17,7 +17,7 @@ def sign(m):
 
 	#generate signature
 	#Your code 
-	G = ecdsa.secp256k1 #generator
+	G = ecdsa.SECP256k1 #generator
 	n = G.order() # order of G
 	k = randint(1,n)
 	p1 = k * G
