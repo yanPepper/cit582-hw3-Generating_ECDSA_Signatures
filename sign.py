@@ -10,8 +10,10 @@ def sign(m):
 	#generate public key
 	#Your code here
 	# this is your sign (private key)
-	private_key = ecdsa.SigningKey.generate(curve=ecdsa.SECP256k1) 
-	public_key = private_key.get_verifying_key()
+	#private_key = ecdsa.SigningKey.generate(curve=ecdsa.SECP256k1) 
+	#public_key = private_key.get_verifying_key()
+	private_key, public_key = keys.gen_keypair(curve.secp256k1) 
+
 
 	#generate signature
 	#Your code 
