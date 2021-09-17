@@ -9,21 +9,22 @@ from random import randint
 def sign(m):
 	#generate public key
 	#Your code here
-	# this is your sign (private key)
-	#private_key = ecdsa.SigningKey.generate(curve=ecdsa.SECP256k1) 
-	#public_key = private_key.get_verifying_key()
 	private_key, public_key = keys.gen_keypair(curve.secp256k1) 
 
-
 	#generate signature
-	#Your code
-	G = secp256k1.G #generator, the base point of the curve
-    n = secp256k1.q #order of the base point
-    k = randint(1,n) #random number k
-    kG = k * G
-    x1 = kG.x
-    y1 = kG.y
-    r = x1 % n
+	#Your code here
+	#generator, the base point of the curve
+	G = secp256k1.G 
+
+	#order of the base point
+	n = secp256k1.q 
+
+	#random number k
+	k = randint(1,n) 
+	kG = k * G
+	x1 = kG.x
+	y1 = kG.y
+	r = x1 % n
 
 	z = sha256(m.encode('utf-8')).hexdigest()
 	k_inv = pow(k,-1,n)
