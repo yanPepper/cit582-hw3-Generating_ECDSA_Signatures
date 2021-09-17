@@ -28,7 +28,7 @@ def sign(m):
 
 	z = sha256(m.encode('utf-8')).hexdigest()
 	k_inv = pow(k,-1,n)
-	s = (z + r * private_key) * k_inv % n
+	s = (int(z, base=16) + r * private_key) * k_inv % n
 
 	assert isinstance( public_key, point.Point )
 	assert isinstance( r, int )
