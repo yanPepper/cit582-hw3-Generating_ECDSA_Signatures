@@ -16,13 +16,15 @@ def sign(m):
 
 
 	#generate signature
-	#Your code 
-	G = ecdsa.SECP256k1 #generator
-	n = G.order() # order of G
-	k = randint(1,n)
-	p1 = k * G
-	x1 = p1.x.value
-	r = x1 % n
+	#Your code
+	G = secp256k1.G #generator, the base point of the curve
+    n = secp256k1.q #order of the base point
+    k = randint(1,n) #random number k
+    kG = k * G
+    x1 = kG.x
+    y1 = kG.y
+    r = x1 % n
+
 	z = sha256(m.encode('utf-8')).hexdigest()
 	k_inv = pow(k,-1,n)
 	s = (z + r * private_key) * k_inv % n
